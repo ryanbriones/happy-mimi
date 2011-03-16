@@ -1,0 +1,1 @@
+require "happy-mimi/action-mailer"
