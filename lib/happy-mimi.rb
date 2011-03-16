@@ -1,4 +1,5 @@
-require "CGI"
+require "happy-mimi/core-ext/hash"
+require "net/https"
 
 module HappyMimi
   BASE_URI = "https://api.madmimi.com"
@@ -40,9 +41,15 @@ module HappyMimi
   
   def self.hash_to_http_pairs(hash)
     pairs = hash.inject([]) do |http_pairs, (key, value)|
-      http_pairs << "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
+      http_pairs << "#{cgi_escape(key.to_s)}=#{cgi_escape(value.to_s)}"
     end
     
     pairs.join("&")
+  end
+  
+  def self.cgi_escape(string)
+    string.gsub(/([^ a-zA-Z0-9_.-]+)/n) do
+      '%' + $1.unpack('H2' * $1.size).join('%').upcase
+    end.tr(' ', '+')
   end
 end
