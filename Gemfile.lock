@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    happy-mimi (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -21,4 +26,6 @@ PLATFORMS
 
 DEPENDENCIES
   artifice (= 0.6)
-  rspec (= 2.5.0)
+  bundler (>= 1.0.0)
+  happy-mimi!
+  rspec (~> 2.5.0)

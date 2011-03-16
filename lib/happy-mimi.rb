@@ -2,6 +2,8 @@ require "happy-mimi/core-ext/hash"
 require "net/https"
 
 module HappyMimi
+  require "happy-mimi/action-mailer" if defined?(Rails)
+  
   BASE_URI = "https://api.madmimi.com"
   
   def self.default_parameters=(new_default_parameters = {})
