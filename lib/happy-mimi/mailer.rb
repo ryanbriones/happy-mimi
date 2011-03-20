@@ -22,11 +22,11 @@ module HappyMimi
       
       response = HappyMimi.call_api("/mailer", :post, parameters)
       case response
-      when HTTPSuccess
+      when Net::HTTPSuccess
         @transaction_id = response.body
-      when HTTPClientError
+      when Net::HTTPClientError
         @last_error =  response.body
-      when HTTPServerError
+      when Net::HTTPServerError
         @last_error = "Something went wrong on the server"
       end
     end
